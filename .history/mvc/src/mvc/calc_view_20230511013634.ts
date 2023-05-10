@@ -20,7 +20,6 @@ export namespace CALC.mvc {
     firstButtonGroup: HTMLElement;
     secondButtonGroup: HTMLElement;
     constructor(private root: HTMLElement) {
-      //버튼 컴포넌트 생성
       const firstIncreaseButton = new Button('+', () => {
         console.log('firstIncreaseButton');
       });
@@ -35,19 +34,15 @@ export namespace CALC.mvc {
         console.log('secondDecreaseButton');
       });
 
-      //버튼 그룹 컴포넌트에 장착해주기
       this.firstButtonGroup = this.makeButtonGroup(
         firstIncreaseButton.element,
-        firstDecreaseButton.element,
-        '첫 번째 숫자 증가 감소 버튼들: '
+        firstDecreaseButton.element
       );
       this.secondButtonGroup = this.makeButtonGroup(
         secondIncreaseButton.element,
-        secondDecreaseButton.element,
-        '두 번째 숫자 증가 감소 버튼들: '
+        secondDecreaseButton.element
       );
 
-      //+, -, /, * 연산자별 식 생성
       this.plusExpression = new Expression({
         oper: '+',
         firstNumber: 5,
@@ -73,21 +68,14 @@ export namespace CALC.mvc {
         result: 2,
       });
 
-      //렌더링 해주기
       this.render();
     }
 
-    makeButtonGroup(
-      plusBtn: HTMLElement,
-      minusBtn: HTMLElement,
-      text: string
-    ): HTMLElement {
+    makeButtonGroup(plusBtn: HTMLElement, minusBtn: HTMLElement): HTMLElement {
       const div = document.createElement('div');
-      const content = document.createTextNode(text);
-      div.append(content);
       div.append(plusBtn);
       div.append(minusBtn);
-      div.setAttribute('class', 'calc-board__button-group');
+      div.setAttribute('calc-board__button-group', 'class');
       return div;
     }
 

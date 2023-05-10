@@ -11,9 +11,3 @@
 .calc-board__expression p {
   padding: 1rem;
 }
-
-.calc-board__button-group {
-  display: flex;
-  align-items: center;
-  vertical-align: center;
-}

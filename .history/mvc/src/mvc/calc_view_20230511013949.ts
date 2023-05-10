@@ -87,7 +87,7 @@ export namespace CALC.mvc {
       div.append(content);
       div.append(plusBtn);
       div.append(minusBtn);
-      div.setAttribute('class', 'calc-board__button-group');
+      div.setAttribute('calc-board__button-group', 'class');
       return div;
     }
 

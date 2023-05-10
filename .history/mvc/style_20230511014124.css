@@ -15,5 +15,5 @@
 .calc-board__button-group {
   display: flex;
   align-items: center;
-  vertical-align: center;
+  line-height: 100px;
 }

@@ -1,6 +1,6 @@
 .calc-board {
   width: 300px;
-  height: 400px;
+  height: 300px;
   border: 1px solid black;
 }
 
@@ -10,10 +10,4 @@
 
 .calc-board__expression p {
   padding: 1rem;
-}
-
-.calc-board__button-group {
-  display: flex;
-  align-items: center;
-  vertical-align: center;
 }
