@@ -1,20 +1,12 @@
-//import { CALC as calc2 } from './calc_view';
 export var CALC;
 (function (CALC) {
     var mvc;
     (function (mvc) {
-        //import CalcView = calc2.mvc.CalcView;
         class CalcController {
-            //private calcView: CalcView;
-            constructor(calcModel) {
+            constructor(calcModel, calcView) {
                 this.calcModel = calcModel;
+                this.calcView = calcView;
             }
-            setCalcModel(calcModel) {
-                this.calcModel = calcModel;
-            }
-            // setCalcView(calcView: CalcView): void{
-            // 	this.calcView = calcView;
-            // }
             add() {
                 let firstNumber = this.calcModel.getFirstNumber();
                 let secondNumber = this.calcModel.getSecondNumber();
@@ -37,19 +29,23 @@ export var CALC;
             }
             decreaseFirstNumber() {
                 this.calcModel.decreaseFirstNumber();
-                //this.calcView.redraw();
+                this.calcView.synchronizeModelAndView();
+                this.calcView.render();
             }
             decreaseSecondNumber() {
                 this.calcModel.decreaseSecondNumber();
-                //this.calcView.redraw();
+                this.calcView.synchronizeModelAndView();
+                this.calcView.render();
             }
             increaseFirstNumber() {
                 this.calcModel.increaseFirstNumber();
-                //this.calcView.redraw();
+                this.calcView.synchronizeModelAndView();
+                this.calcView.render();
             }
             increaseSecondNumber() {
                 this.calcModel.increaseSecondNumber();
-                //this.calcView.redraw();
+                this.calcView.synchronizeModelAndView();
+                this.calcView.render();
             }
         }
         mvc.CalcController = CalcController;

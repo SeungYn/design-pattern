@@ -45,29 +45,25 @@ export namespace CALC.mvc {
     decreaseFirstNumber(): void {
       this.calcModel.decreaseFirstNumber();
 
-      this.calcView.synchronizeModelAndView();
-      this.calcView.render();
+      //this.calcView.redraw();
     }
 
     decreaseSecondNumber(): void {
       this.calcModel.decreaseSecondNumber();
 
-      this.calcView.synchronizeModelAndView();
-      this.calcView.render();
+      //this.calcView.redraw();
     }
 
     increaseFirstNumber(): void {
       this.calcModel.increaseFirstNumber();
 
-      this.calcView.synchronizeModelAndView();
-      this.calcView.render();
+      //this.calcView.redraw();
     }
 
     increaseSecondNumber(): void {
       this.calcModel.increaseSecondNumber();
 
-      this.calcView.synchronizeModelAndView();
-      this.calcView.render();
+      //this.calcView.redraw();
     }
   }
 }

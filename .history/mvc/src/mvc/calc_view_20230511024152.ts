@@ -95,9 +95,6 @@ export namespace CALC.mvc {
     synchronizeModelAndView() {
       if (this.plusExpression) {
         this.root.removeChild(this.plusExpression.element);
-        this.root.removeChild(this.minusExpression!.element);
-        this.root.removeChild(this.multiExpression!.element);
-        this.root.removeChild(this.diviExpression!.element);
       }
       this.plusExpression = new Expression({
         oper: '+',

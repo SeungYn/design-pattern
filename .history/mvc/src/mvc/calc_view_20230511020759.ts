@@ -10,31 +10,28 @@ export namespace CALC.mvc {
   export class CalcView {
     calcModel: CalcModel;
     calcController: CalcController;
-    plusExpression: Expression | undefined;
-    diviExpression: Expression | undefined;
-    multiExpression: Expression | undefined;
-    minusExpression: Expression | undefined;
+    plusExpression: Expression;
+    diviExpression: Expression;
+    multiExpression: Expression;
+    minusExpression: Expression;
     firstButtonGroup: HTMLElement;
     secondButtonGroup: HTMLElement;
 
     constructor(private root: HTMLElement) {
       this.calcModel = new CalcModel();
-      this.calcController = new CalcController(this.calcModel, this);
+      this.calcController = new CalcController(this.calcModel);
 
       //버튼 컴포넌트 생성
-      const firstIncreaseButton = new Button(
-        '+',
-        this.clickHandler.bind(this, '+', 'first')
-      );
-      const firstDecreaseButton = new Button(
-        '-',
-        this.clickHandler.bind(this, '-', 'first')
-      );
+      const firstIncreaseButton = new Button('+', () => {
+        console.log('firstIncreaseButton');
+      });
+      const firstDecreaseButton = new Button('-', () => {
+        console.log('firstDecreaseButton');
+      });
 
-      const secondIncreaseButton = new Button(
-        '+',
-        this.clickHandler.bind(this, '+', 'second')
-      );
+      const secondIncreaseButton = new Button('+', () => {
+        console.log('secondIncreaseButton');
+      });
       const secondDecreaseButton = new Button(
         '-',
         this.clickHandler.bind(this, '-', 'second')
@@ -52,8 +49,31 @@ export namespace CALC.mvc {
         '두 번째 숫자 증가 감소 버튼들: '
       );
 
-      // 모델 뷰 데이터 동기화
-      this.synchronizeModelAndView();
+      //+, -, /, * 연산자별 식 생성
+      this.plusExpression = new Expression({
+        oper: '+',
+        firstNumber: 5,
+        secondNumber: 2,
+        result: 7,
+      });
+      this.minusExpression = new Expression({
+        oper: '-',
+        firstNumber: 5,
+        secondNumber: 2,
+        result: 3,
+      });
+      this.multiExpression = new Expression({
+        oper: '*',
+        firstNumber: 5,
+        secondNumber: 2,
+        result: 10,
+      });
+      this.diviExpression = new Expression({
+        oper: '/',
+        firstNumber: 5,
+        secondNumber: 2,
+        result: 2,
+      });
 
       //렌더링 해주기
       this.render();
@@ -92,46 +112,13 @@ export namespace CALC.mvc {
       console.log(this.calcModel);
     }
 
-    synchronizeModelAndView() {
-      if (this.plusExpression) {
-        this.root.removeChild(this.plusExpression.element);
-        this.root.removeChild(this.minusExpression!.element);
-        this.root.removeChild(this.multiExpression!.element);
-        this.root.removeChild(this.diviExpression!.element);
-      }
-      this.plusExpression = new Expression({
-        oper: '+',
-        firstNumber: this.calcModel.getFirstNumber(),
-        secondNumber: this.calcModel.getSecondNumber(),
-        result: this.calcController.add(),
-      });
-      this.minusExpression = new Expression({
-        oper: '-',
-        firstNumber: this.calcModel.getFirstNumber(),
-        secondNumber: this.calcModel.getSecondNumber(),
-        result: this.calcController.substract(),
-      });
-      this.multiExpression = new Expression({
-        oper: '*',
-        firstNumber: this.calcModel.getFirstNumber(),
-        secondNumber: this.calcModel.getSecondNumber(),
-        result: this.calcController.multiply(),
-      });
-      this.diviExpression = new Expression({
-        oper: '/',
-        firstNumber: this.calcModel.getFirstNumber(),
-        secondNumber: this.calcModel.getSecondNumber(),
-        result: this.calcController.divide(),
-      });
-    }
-
     render() {
       this.root.append(this.firstButtonGroup);
       this.root.append(this.secondButtonGroup);
-      this.root.append(this.plusExpression!.element);
-      this.root.append(this.minusExpression!.element);
-      this.root.append(this.multiExpression!.element);
-      this.root.append(this.diviExpression!.element);
+      this.root.append(this.plusExpression.element);
+      this.root.append(this.minusExpression.element);
+      this.root.append(this.multiExpression.element);
+      this.root.append(this.diviExpression.element);
     }
   }
 }

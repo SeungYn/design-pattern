@@ -93,12 +93,6 @@ export namespace CALC.mvc {
     }
 
     synchronizeModelAndView() {
-      if (this.plusExpression) {
-        this.root.removeChild(this.plusExpression.element);
-        this.root.removeChild(this.minusExpression!.element);
-        this.root.removeChild(this.multiExpression!.element);
-        this.root.removeChild(this.diviExpression!.element);
-      }
       this.plusExpression = new Expression({
         oper: '+',
         firstNumber: this.calcModel.getFirstNumber(),
@@ -126,6 +120,13 @@ export namespace CALC.mvc {
     }
 
     render() {
+      if (this.plusExpression) {
+        this.root.removeChild(this.plusExpression.element);
+        this.root.removeChild(this.minusExpression!.element);
+        this.root.removeChild(this.multiExpression!.element);
+        this.root.removeChild(this.diviExpression!.element);
+      }
+
       this.root.append(this.firstButtonGroup);
       this.root.append(this.secondButtonGroup);
       this.root.append(this.plusExpression!.element);

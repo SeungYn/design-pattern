@@ -10,10 +10,10 @@ export namespace CALC.mvc {
   export class CalcView {
     calcModel: CalcModel;
     calcController: CalcController;
-    plusExpression: Expression | undefined;
-    diviExpression: Expression | undefined;
-    multiExpression: Expression | undefined;
-    minusExpression: Expression | undefined;
+    plusExpression: Expression;
+    diviExpression: Expression;
+    multiExpression: Expression;
+    minusExpression: Expression;
     firstButtonGroup: HTMLElement;
     secondButtonGroup: HTMLElement;
 
@@ -52,7 +52,7 @@ export namespace CALC.mvc {
         '두 번째 숫자 증가 감소 버튼들: '
       );
 
-      // 모델 뷰 데이터 동기화
+      //+, -, /, * 연산자별 식 생성
       this.synchronizeModelAndView();
 
       //렌더링 해주기
@@ -93,12 +93,6 @@ export namespace CALC.mvc {
     }
 
     synchronizeModelAndView() {
-      if (this.plusExpression) {
-        this.root.removeChild(this.plusExpression.element);
-        this.root.removeChild(this.minusExpression!.element);
-        this.root.removeChild(this.multiExpression!.element);
-        this.root.removeChild(this.diviExpression!.element);
-      }
       this.plusExpression = new Expression({
         oper: '+',
         firstNumber: this.calcModel.getFirstNumber(),
@@ -128,10 +122,10 @@ export namespace CALC.mvc {
     render() {
       this.root.append(this.firstButtonGroup);
       this.root.append(this.secondButtonGroup);
-      this.root.append(this.plusExpression!.element);
-      this.root.append(this.minusExpression!.element);
-      this.root.append(this.multiExpression!.element);
-      this.root.append(this.diviExpression!.element);
+      this.root.append(this.plusExpression.element);
+      this.root.append(this.minusExpression.element);
+      this.root.append(this.multiExpression.element);
+      this.root.append(this.diviExpression.element);
     }
   }
 }
