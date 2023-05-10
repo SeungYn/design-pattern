@@ -6,8 +6,5 @@
 
 .calc-board__expression {
   display: flex;
-}
-
-.calc-board__expression p {
-  padding: 1rem;
+  background-color: black;
 }

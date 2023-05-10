@@ -1,6 +1,6 @@
-import { CALC as calc } from './calc_model.js';
-import { CALC as calc2 } from './calc_controller.js';
-import Expression from './components/Expression.js';
+import { CALC as calc } from './calc_model';
+import { CALC as calc2 } from './calc_controller';
+import Expression from './components/Expression';
 
 export namespace CALC.mvc {
   let PADDING = 30;
@@ -20,7 +20,6 @@ export namespace CALC.mvc {
         secondNumber: 2,
         result: 3,
       });
-      console.log(123);
       this.render();
     }
 

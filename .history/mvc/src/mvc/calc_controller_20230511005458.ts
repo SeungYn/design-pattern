@@ -1,4 +1,4 @@
-import { CALC as calc } from './calc_model.js';
+import { CALC as calc } from './calc_model';
 //import { CALC as calc2 } from './calc_view';
 
 export namespace CALC.mvc {

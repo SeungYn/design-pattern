@@ -17,7 +17,6 @@ export default class Expression {
 			<p>${firstNumber}</p>
 			<p>${oper}</p>
 			<p>${secondNumber}</p>
-			<p>=</p>
 			<p>${result}</p>
 		`;
     this.element = div;

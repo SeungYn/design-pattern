@@ -1,4 +1,4 @@
-import { CALC as calc } from './calc_model.js';
+import { CALC as calc } from './calc_model';
 //import { CALC as calc2 } from './calc_view';
 
 export namespace CALC.mvc {
@@ -6,12 +6,10 @@ export namespace CALC.mvc {
   //import CalcView = calc2.mvc.CalcView;
 
   export class CalcController {
-    private calcModel!: CalcModel;
+    private calcModel: CalcModel;
     //private calcView: CalcView;
 
-    constructor(calcModel: CalcModel) {
-      this.calcModel = calcModel;
-    }
+    constructor() {}
 
     setCalcModel(calcModel: CalcModel): void {
       this.calcModel = calcModel;

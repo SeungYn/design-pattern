@@ -1,6 +1,7 @@
-import { CALC as calc } from './calc_model.js';
-import { CALC as calc2 } from './calc_controller.js';
-import Expression from './components/Expression.js';
+import { CALC as calc } from './calc_model';
+import { CALC as calc2 } from './calc_controller';
+import { CALC as calc3 } from '../struct/rectangle';
+import Expression from './components/Expression';
 
 export namespace CALC.mvc {
   let PADDING = 30;
@@ -10,22 +11,16 @@ export namespace CALC.mvc {
 
   import CalcModel = calc.mvc.CalcModel;
   import CalcController = calc2.mvc.CalcController;
+  import Rectangle = calc3.struct.Rectangle;
 
   export class CalcView {
-    minusExpression: Expression;
     constructor(private root: HTMLElement) {
-      this.minusExpression = new Expression({
+      const expression1 = new Expression({
         oper: '-',
         firstNumber: 5,
         secondNumber: 2,
         result: 3,
       });
-      console.log(123);
-      this.render();
-    }
-
-    render() {
-      this.root.append(this.minusExpression.element);
     }
   }
 }
